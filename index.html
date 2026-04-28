@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prognos AI | مستقبل البرمجة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    </style>
+</head>
+<body class="p-5 font-sans">
+    <div class="max-w-2xl mx-auto">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-blue-500 mb-2">Prognos AI 🧠</h1>
+            <p class="text-gray-400">محرك ذكاء اصطناعي متصل بعلم البشرية</p>
+        </header>
+
+        <div class="glass rounded-2xl p-6 min-h-[400px] mb-6 flex flex-col shadow-2xl">
+            <div id="chat-history" class="flex-grow space-y-4 mb-4 overflow-y-auto">
+                <div class="bg-blue-600/20 p-3 rounded-lg text-sm border border-blue-500/30">
+                    مرحباً بك! أنا Prognos. لقد ذاكرت ملفات جيت هب وجاهز لبناء مشروعك. ماذا سنبرمج اليوم؟
+                </div>
+            </div>
+            
+            <div class="relative">
+                <textarea id="user-input" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="اطلب أي كود أو تحديث للملفات..."></textarea>
+                <button onclick="sendMessage()" class="absolute left-2 bottom-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg font-bold transition">إرسال</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 text-center">
+            <div class="glass p-4 rounded-xl">
+                <div class="text-xs text-gray-400">العلم المتصل</div>
+                <div class="text-xl font-bold text-green-400">GitHub Awesome</div>
+            </div>
+            <div class="glass p-4 rounded-xl">
+                <div class="text-xs text-gray-400">تحديث المحرك</div>
+                <div class="text-xl font-bold text-blue-400">2026 Ready</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const history = document.getElementById('chat-history');
+            if(input.value.trim() === "") return;
+
+            // إضافة رسالة المستخدم للواجهة
+            history.innerHTML += `<div class="bg-slate-700 p-3 rounded-lg text-sm self-start">${input.value}</div>`;
+            input.value = "";
+            
+            // هنا لاحقاً هنربط الكود بـ API عشان الـ AI يرد فعلياً
+        }
+    </script>
+</body>
+</html>
