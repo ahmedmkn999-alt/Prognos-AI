@@ -1,0 +1,27 @@
+name: Update Prognos Brain
+on:
+  workflow_dispatch: # يسمح لك بتشغيله يدوياً
+  schedule:
+    - cron: '0 0 * * *' # يشتغل لوحده كل يوم الساعة 12 بالليل
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run collector
+        run: python gather_data.py
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update world knowledge" || echo "No changes to commit"
+          git push
+          
